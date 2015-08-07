@@ -57,9 +57,9 @@ namespace Calcy {
             Term.Rule = number | ParExpr | stringLit | FunctionCall | identifier | MemberAccess | IndexedAccess;
             ParExpr.Rule = "(" + Expr + ")";
             UnExpr.Rule = UnOp + Term + ReduceHere();
-            UnOp.Rule = ToTerm("+") | "-" | "!";
+            UnOp.Rule = ToTerm("+") | "-" | "!" | "~";
             BinExpr.Rule = Expr + BinOp + Expr;
-            BinOp.Rule = ToTerm("+") | "-" | "*" | "/" | "**" | "==" | "<" | "<=" | ">" | ">=" | "!=" | "&&" | "||" | "&" | "|";
+            BinOp.Rule = ToTerm("+") | "-" | "*" | "/" | "==" | "<" | "<=" | ">" | ">=" | "!=" | "&&" | "||" | "&" | "|" | "^";
             PrefixIncDec.Rule = IncDecOp + identifier;
             PostfixIncDec.Rule = identifier + PreferShiftHere() + IncDecOp;
             IncDecOp.Rule = ToTerm("++") | "--";
@@ -83,11 +83,11 @@ namespace Calcy {
 
             // 4. Operators precedence
             RegisterOperators(10, "?");
-            RegisterOperators(15, "&", "&&", "|", "||");
+            RegisterOperators(15, "&", "&&", "|", "||", "~", "^");
             RegisterOperators(20, "==", "<", "<=", ">", ">=", "!=");
             RegisterOperators(30, "+", "-");
             RegisterOperators(40, "*", "/");
-            RegisterOperators(50, Associativity.Right, "**");
+            //RegisterOperators(50, Associativity.Right, "**");
             RegisterOperators(60, "!");
             // For precedence to work, we need to take care of one more thing: BinOp. 
             //For BinOp which is or-combination of binary operators, we need to either 
