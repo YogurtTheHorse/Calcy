@@ -1,0 +1,21 @@
+﻿<Controls:MetroWindow x:Class="Calcy.MainWindow"
+                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+                      Title="Calcy"
+                      Height="350"
+                      Width="525">
+    <Controls:MetroWindow.RightWindowCommands>
+        <Controls:WindowCommands>
+            <Button Content="Settings" Click="openSettings"/>
+        </Controls:WindowCommands>
+    </Controls:MetroWindow.RightWindowCommands>
+
+    <Grid>
+        <TextBox x:Name="textBox" TextWrapping="Wrap" Text="TextBox">
+            <TextBox.Background>
+                <SolidColorBrush Opacity="0.25" Color="White"/>
+            </TextBox.Background>
+        </TextBox>
+    </Grid>
+</Controls:MetroWindow>
