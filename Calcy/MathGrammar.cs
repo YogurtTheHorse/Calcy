@@ -59,7 +59,7 @@ namespace Calcy {
             UnExpr.Rule = UnOp + Term + ReduceHere();
             UnOp.Rule = ToTerm("+") | "-" | "!" | "~";
             BinExpr.Rule = Expr + BinOp + Expr;
-            BinOp.Rule = ToTerm("+") | "-" | "*" | "/" | "==" | "<" | "<=" | ">" | ">=" | "!=" | "&&" | "||" | "&" | "|" | "^";
+            BinOp.Rule = ToTerm("+") | "-" | "*" | "/" | "==" | "<" | "<=" | ">" | ">=" | "!=" | "&&" | "||" | "&" | "|" | "^" | "%";
             PrefixIncDec.Rule = IncDecOp + identifier;
             PostfixIncDec.Rule = identifier + PreferShiftHere() + IncDecOp;
             IncDecOp.Rule = ToTerm("++") | "--";
